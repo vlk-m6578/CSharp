@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="lab5._1.Employee">
+    <Position X="4.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAABAAQAABAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Employee.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="workTypes" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="lab5._1.TypesOfWork">
+    <Position X="3.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAIAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>TypesOfWork.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab5._1.PayrollDepartment">
+    <Position X="0.5" Y="0.75" Width="1.5" />
+    <AssociationLine Name="employees" Type="lab5._1.Employee">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.631" Y="0.081" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="works" Type="lab5._1.TypesOfWork">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.089" Y="0.199" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAASAAAAAAAIAABACAAAAAAAAAQAABCAACA=</HashCode>
+      <FileName>PayrollDepartment.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="works" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="employees" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Enum Name="Profession" Collapsed="true">
+    <Position X="7.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAQAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Profession.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
