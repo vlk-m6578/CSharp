@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace lab3.Entities
 {
@@ -15,8 +11,10 @@ namespace lab3.Entities
             eventsList = new List<string>();
         }
 
-        public List<string> GetEvents() { return eventsList; }
-
+        public List<string> GetEvents() 
+        { 
+            return eventsList; 
+        }
         public void LogEvent(string info)
         {
             eventsList.Add(info);

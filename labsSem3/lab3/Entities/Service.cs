@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace lab3.Entities
 {
     public class Service
@@ -16,11 +11,7 @@ namespace lab3.Entities
             this.tariff = tariff;
             this.nameOfResident = nameOfResident;
             this.consumption = consumption;
-        }
-        Tariff Tariff 
-        { 
-            get { return tariff; } 
-        }
+        } 
 
         public void SetTariff(Tariff tariff)
         {
@@ -28,7 +19,7 @@ namespace lab3.Entities
         }
         public double GetPrice()
         {
-            return tariff.GetPrice;
+            return tariff.GetPrice();
         }
         public string GetName()
         {

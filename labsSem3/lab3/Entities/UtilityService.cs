@@ -2,28 +2,29 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace lab3.Entities
 {
-    public class UtilityService
+    public class UtilityService:IUtilityService
     {
-        Dictionary<string, Service> services;//услуги
-        List<Resident> residents;//жильцы
+        Dictionary<string, Service> services;
+        List<Resident> residents;
         List<Service> residentsServices;
         List<Tariff> tariffs;
         Journal journal;
 
         public event Action<string> someAction;
 
-        public Journal GetJournal() { return journal; }
+        public Journal GetJournal() 
+        { 
+            return journal; 
+        }
 
         private Resident FindResidentByName(string name)
         {
             foreach(Resident r in residents)
             {
-                if (r.Name.Equals(name))
+                if (r.GetName().Equals(name))
                 {
                     return r;
                 }
@@ -34,7 +35,7 @@ namespace lab3.Entities
         {
             foreach (Tariff t in tariffs)
             {
-                if (t.ServiceName.Equals(name))
+                if (t.GetServiceName().Equals(name))
                 {
                     return t;
                 }
@@ -84,10 +85,10 @@ namespace lab3.Entities
         public double CalculateTotalPayments()
         {
             double totalPayments = 0;
-            totalPayments += (from service in residentsServices where service.GetTariff().ServiceName.Equals("Water supply") select service.GetPrice()*service.GetConsumption()).Sum();
-            totalPayments += (from service in residentsServices where service.GetTariff().ServiceName.Equals("Water supply+") select service.GetPrice() * service.GetConsumption()).Sum();
-            totalPayments += (from service in residentsServices where service.GetTariff().ServiceName.Equals("Electricity") select service.GetPrice() * service.GetConsumption()).Sum();
-            totalPayments += (from service in residentsServices where service.GetTariff().ServiceName.Equals("Electricity+") select service.GetPrice() * service.GetConsumption()).Sum();
+            totalPayments += (from service in residentsServices where service.GetTariff().GetServiceName().Equals("Water supply") select service.GetPrice()*service.GetConsumption()).Sum();
+            totalPayments += (from service in residentsServices where service.GetTariff().GetServiceName().Equals("Water supply+") select service.GetPrice() * service.GetConsumption()).Sum();
+            totalPayments += (from service in residentsServices where service.GetTariff().GetServiceName().Equals("Electricity") select service.GetPrice() * service.GetConsumption()).Sum();
+            totalPayments += (from service in residentsServices where service.GetTariff().GetServiceName().Equals("Electricity+") select service.GetPrice() * service.GetConsumption()).Sum();
 
             return totalPayments;
         }
@@ -101,16 +102,11 @@ namespace lab3.Entities
         public string GetResidentNameMax()
         {
             var residentList = from resident in residents
-                               orderby CalculateResidentTotalPayment(resident.Name) descending
+                               orderby CalculateResidentTotalPayment(resident.GetName()) descending
                                select resident;
 
             List<Resident> res = residentList.ToList();
-            return res[0].Name;
-        }
-
-        public int GetServicesCount(string serviceName)
-        {
-            throw new NotImplementedException();
+            return res[0].GetName();
         }
         public List<Service> GetSortServiceList()
         {
@@ -128,20 +124,18 @@ namespace lab3.Entities
         }
         public int GetCountOfResidentsPayMore(int price)
         {
-            int count = residents.Aggregate(0, (tmp, client) => CalculateResidentTotalPayment(client.Name) > price ? tmp + 1 : tmp);
+            int count = residents.Aggregate(0, (tmp, resident) => CalculateResidentTotalPayment(resident.GetName()) > price ? tmp + 1 : tmp);
             return count;
         }
         public List<double> GetResidentsPaymentsByTariff(string name)
         {
             List<double> res = new List<double>();
 
-            Resident resident = FindResidentByName(name);
-
             var listOfServicesByResident = from service in residentsServices where service.GetName().Equals(name) select service;
 
-            var groupOfCallsByTariff = (listOfServicesByResident.GroupBy(service => service.GetTariff()));
+            var groupOfServicesByTariff = (listOfServicesByResident.GroupBy(service => service.GetTariff()));
 
-            foreach (var group in groupOfCallsByTariff)
+            foreach (var group in groupOfServicesByTariff)
             {
                 double totalAmount = 0;
                 totalAmount += group.Sum(service => service.GetConsumption() * service.GetPrice());

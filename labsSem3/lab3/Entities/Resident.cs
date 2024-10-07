@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace lab3.Entities
 {
@@ -16,7 +12,10 @@ namespace lab3.Entities
             this.name = name;
             services = new List<Service>();
         }
-        public string Name {  get { return name; } }
+        public string GetName()
+        {
+            return name;
+        }
         public List<Service> Services { get {  return services; } }
 
     

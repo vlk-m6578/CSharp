@@ -5,12 +5,15 @@ namespace lab3.Contracts
 {
     internal interface IUtilityService
     {
-        void SetTariff(string name, double rate);//добавление нового тарифа
-        void AddResident(string name);//добавление жильца
-        void UseService(string residentName, string serviceName);//добавление услуги
-        //double GetResidentServices();//сумма всех потребленных услуг жильца
-        double CalculateTotalPayments();//стоимость ВСЕХ услуг
-        int GetServicesCount(string serviceName);//общее количество заказов на заданную услугу
-
+        void AddResident(string name);
+        void UseService(string residentName, string serviceName, int consumption);
+        void SetTariff(string name, double price);
+        
+        List<Service> GetSortServiceList();//получение списка названий всех услуг, отсортированного по стоимости
+        double CalculateTotalPayments();//получение общей стоимости всех выполненных услуг ЖЭС
+        double CalculateResidentTotalPayment(string name);//получение общей стоимости всех услуг, заказанных жильцом в соответствии с действующими тарифами
+        string GetResidentNameMax();//получение имени жильца, заплатившего максимальную сумму
+        int GetCountOfResidentsPayMore(int price);//получение количества жильцов, заплативших больше определеной суммы
+        List<double> GetResidentsPaymentsByTariff(string name);//получение жильцом списка сумм, заплаченных по каждой услуге
     }
 }
