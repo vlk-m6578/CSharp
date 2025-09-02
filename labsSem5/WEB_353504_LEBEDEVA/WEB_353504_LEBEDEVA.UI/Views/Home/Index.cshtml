@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <main class="container mt-4">
+        <h2>Лабораторная работа 1</h2>
+        <h3>Список</h3>
+        <ol type="A">
+            <li>элемент 0 списка</li>
+            <li>элемент 1 списка</li>
+            <li>элемент 2 списка</li>
+            <li>элемент 3 списка</li>
+            <li>элемент 4 списка</li>
+        </ol>
+        <hr />
+        <h3>Форма</h3>
+        <form method="post" action="">
+            <div class="row mb-3">
+                <label class="col-form-label col-sm-2">Чекбоксы:</label>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" 
+                               type="checkbox" 
+                               id="checkbox1" 
+                               name="checkbox1" 
+                               value="yes">
+                        <label class="form-check-label" for="checkbox1">
+                            Чек-бокс 1
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" 
+                               type="checkbox" 
+                               id="checkbox2" 
+                               name="checkbox2" 
+                               value="yes">
+                        <label class="form-check-label" for="checkbox2">
+                            Чек-бокс 2
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <label class="col-form-label col-sm-2">Радио:</label>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" 
+                               type="radio" 
+                               name="radioGroup" 
+                               id="radio1" 
+                               value="radio1" 
+                               checked>
+                        <label class="form-check-label" for="radio1">
+                            Радио-1
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" 
+                               type="radio" 
+                               name="radioGroup" 
+                               id="radio2" 
+                               value="radio2">
+                        <label class="form-check-label" for="radio2">
+                            Радио-2
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" 
+                               type="radio" 
+                               name="radioGroup" 
+                               id="radio3" 
+                               value="radio3">
+                        <label class="form-check-label" for="radio3">
+                            Радио-3
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="login" class="col-form-label col-sm-2">Логин:</label>
+                <div class="col-sm-10">
+                    <input type="text" 
+                           class="form-control" 
+                           id="login" 
+                           name="login" 
+                           required 
+                           placeholder="Введите имя">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="password" class="col-form-label col-sm-2">Пароль:</label>
+                <div class="col-sm-10">
+                    <input type="password" 
+                           class="form-control" 
+                           id="password" 
+                           name="password" 
+                           required 
+                           placeholder="Введите пароль">
+                </div>
+            </div>
+
+            <!-- Кнопка отправки -->
+            <div class="row mb-3">
+                <div class="col-sm-10 offset-sm-2">
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </div>
+            </div>
+        </form>
+    </main>
+
+</body>
+</html>
