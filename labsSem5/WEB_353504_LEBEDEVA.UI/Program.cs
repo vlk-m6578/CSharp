@@ -1,4 +1,15 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.Cookie.Name = "YourAppCookie";
+        options.LoginPath = "/Account/Login"; // путь к странице входа
+        options.LogoutPath = "/Account/Logout"; // путь для выхода
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(30); // время жизни cookie
+    });
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -13,11 +24,14 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

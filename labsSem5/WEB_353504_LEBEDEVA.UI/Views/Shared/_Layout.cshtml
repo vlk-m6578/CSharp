@@ -49,7 +49,8 @@
                         </li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
-                            <form id="logoutForm" class="form-inline">
+                            <form id="logoutForm" class="form-inline" asp-controller="Account" asp-action="Logout" method="post">
+                                @Html.AntiForgeryToken()
                                 <button id="logout"
                                         type="submit"
                                         class="nav-link btn btn-link text-dark">
