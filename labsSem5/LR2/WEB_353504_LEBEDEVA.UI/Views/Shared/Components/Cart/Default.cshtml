@@ -1,0 +1,5 @@
+﻿@model WEB_353504_LEBEDEVA.UI.ViewComponents.CartViewModel
+
+<a asp-controller="Cart" asp-action="Index" class="navbar-text ms-auto">
+    @Model.Total.ToString("N1") руб <i class="bi bi-cart"></i> (@Model.ItemsCount)
+</a>
